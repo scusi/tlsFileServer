@@ -8,7 +8,7 @@ Syntax
 
 Die generelle syntax lautet:
 
-`tlsFileServer <port> <root_dir>`.
+`tlsFileServer -port=<port> -root=<root_dir>`.
 
 
 *tlsFileServer* erwartet die beiden Dateien *cert.pem* und *key.pem* im gleichen Verzeichnis.
@@ -48,10 +48,15 @@ Holt die sourcen von github.
 
 `cd tlsFileServer`
 
-`go install tlsFileServer`
+`go install`
 
-`tlsFileServer 8443 /usr/share/doc/`
+`tlsFileServer -port=8443 -root=/usr/share/doc/`
 
 startet einen *tlsFileServer* auf port *8080* mit dem root Verzeichnis */usr/share/doc*
 
+NOTE: On Windows the root path is written with forward slashes (like on *nix) regardless of the OS convention (which is with backward slashes).
+
+Windows Example: 
+
+`tlsFileServer -port=8443 -root=C:/Users/Joe/Website`
 
