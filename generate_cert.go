@@ -26,6 +26,7 @@ import (
 	"os"
 	"strings"
 	"time"
+    mrand "math/rand"
 )
 
 var (
@@ -35,6 +36,11 @@ var (
 	isCA      = flag.Bool("ca", false, "whether this cert should be its own Certificate Authority")
 	rsaBits   = flag.Int("rsa-bits", 2048, "Size of RSA key to generate")
 )
+
+func NewSerial() (int64) {
+    mr := mrand.New(mrand.NewSource( time.Now().UTC().UnixNano() ))
+    return mr.Int63()
+}
 
 func main() {
 	flag.Parse()
@@ -69,7 +75,7 @@ func main() {
 	}
 
 	template := x509.Certificate{
-		SerialNumber: new(big.Int).SetInt64(0),
+		SerialNumber: new(big.Int).SetInt64(NewSerial()),
 		Subject: pkix.Name{
 			Organization: []string{"Scusi Inc."},
 		},
