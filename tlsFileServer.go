@@ -38,10 +38,6 @@ func init() {
 // fatal errors will be logged to STDOUT
 func main() {
     flag.Parse()
-    fmt.Println("port has value ", port)
-    fmt.Println("root has value ", root)
-    fmt.Println("cert has value ", cert)
-    fmt.Println("key has value ", key)
     // todo: proper input validation
     // BUG(scusi) input validation missing
     path := root
